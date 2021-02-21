@@ -1,0 +1,13 @@
+<div class="container" *ngIf="venues">
+    <ul class="unstyle venue-list">
+        <li *ngFor="let venue of venues" class="venue-list-item container">
+
+            <div class="column">
+                <h3 class="company-name">
+                    {{ venue.name }}
+                </h3>
+            </div>
+
+        </li>
+    </ul>
+</div>
