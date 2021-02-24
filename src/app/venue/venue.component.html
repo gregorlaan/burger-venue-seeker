@@ -1,44 +1,50 @@
-<h2 class="site-title">Venues</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="site-title">Venues</h2>
 
-<div class="google-maps-container mb-4">
-    <google-map width="100%" [options]="getMapOptions()">
-        <map-circle
-            [center]="getExcludedAreaLatLng()"
-            [radius]="1000"
-        >
-        </map-circle>
+            <div class="google-maps-container mb-4">
+                <google-map width="100%" [options]="getMapOptions()">
+                    <map-circle
+                        [center]="getExcludedAreaLatLng()"
+                        [radius]="1000"
+                    >
+                    </map-circle>
 
-        <map-marker
-            #markerElem="mapMarker"
-            *ngFor="let venue of venues"
-            [position]="{lat: venue.location.lat, lng: venue.location.lng}"
-            [title]="venue.name"
-            (mapClick)="openInfo(markerElem, venue)"
-        >
-        </map-marker>
+                    <map-marker
+                        #markerElem="mapMarker"
+                        *ngFor="let venue of venues"
+                        [position]="{lat: venue.location.lat, lng: venue.location.lng}"
+                        [title]="venue.name"
+                        (mapClick)="openInfo(markerElem, venue)"
+                    >
+                    </map-marker>
 
-        <map-info-window>
-            <div *ngIf="selectedVenue">
-                <a
-                    [attr.href]="getVenueUrl(selectedVenue)"
-                    target="_blank"
-                    class="h3 font-weight-light text-decoration-none text-dark"
-                >
-                    <h3 class="company-name">
-                        {{ selectedVenue.name }}
-                    </h3>
-                </a>
+                    <map-info-window>
+                        <div *ngIf="selectedVenue">
+                            <a
+                                [attr.href]="getVenueUrl(selectedVenue)"
+                                target="_blank"
+                                class="h3 font-weight-light text-decoration-none text-dark"
+                            >
+                                <h3 class="company-name">
+                                    {{ selectedVenue.name }}
+                                </h3>
+                            </a>
 
-                <p class="h6 font-weight-light text-dark">{{ getVenueAddress(selectedVenue) }}</p>
+                            <p class="h6 font-weight-light text-dark">{{ getVenueAddress(selectedVenue) }}</p>
+                        </div>
+                    </map-info-window>
+                </google-map>
             </div>
-        </map-info-window>
-    </google-map>
+        </div>
+    </div>
 </div>
 
 <div class="container" *ngIf="venues">
     <ul class="list-unstyled venue-list row">
         <li *ngFor="let venue of venues" class="col-sm-6 col-md-6 col-lg-3 mb-4">
-            <div class="venue-item">
+            <div class="venue-item p-3">
                 <a
                     [attr.href]="getVenueUrl(venue)"
                     target="_blank"
