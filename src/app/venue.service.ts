@@ -16,6 +16,13 @@ export class VenueService {
   '&client_secret=AZ5PESADIOG4TC0U0LLA5CH4GMXKRZ14VS4UTAHMUQYZTPC4' +
   '&v=20210221';
   private excludedAreaLatLng = new google.maps.LatLng(58.37809353636114, 26.731951240812602);
+  private mapOptions: object = {
+    center: {
+      lat: 58.3739862,
+      lng: 26.7002101
+    },
+    zoom: 13.25
+  };
 
   constructor(
     private http: HttpClient
@@ -48,5 +55,9 @@ export class VenueService {
 
   getExcludedAreaLatLng(): google.maps.LatLng {
     return this.excludedAreaLatLng;
+  }
+
+  getMapOptions(): object {
+    return this.mapOptions;
   }
 }

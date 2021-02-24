@@ -10,17 +10,8 @@ import { Venue } from '../venue';
 })
 export class VenueComponent implements OnInit {
   public venues: Venue[] = [];
-
-  public mapOptions: object = {
-    center: {
-      lat: 58.3739862,
-      lng: 26.7002101
-    },
-    zoom: 13.25
-  };
-
   public markers = [];
-  public infoContent = '';
+  public selectedVenue: Venue | null = null;
 
   constructor(private venueService: VenueService) { }
 
@@ -35,6 +26,10 @@ export class VenueComponent implements OnInit {
 
   getExcludedAreaLatLng(): google.maps.LatLng {
     return this.venueService.getExcludedAreaLatLng();
+  }
+
+  getMapOptions(): object {
+    return this.venueService.getMapOptions();
   }
 
   getVenueUrl(venue: Venue): string {
@@ -54,8 +49,8 @@ export class VenueComponent implements OnInit {
   @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
   @ViewChild(MapInfoWindow, { static: false }) info!: MapInfoWindow;
 
-  openInfo(marker: MapMarker, content: string) {
-    this.infoContent = content
-    this.info.open(marker)
+  openInfo(marker: MapMarker, venue: Venue) {
+    this.selectedVenue = venue;
+    this.info.open(marker);
   }
 }
