@@ -1,11 +1,49 @@
+<h2 class="site-title">Venues</h2>
+
+<div class="google-maps-container">
+    <google-map
+    width="100%"
+    [options]="mapOptions"
+>
+    <map-circle
+        [center]="getExcludedAreaLatLng()"
+        [radius]="1000"
+    >
+    </map-circle>
+
+    <map-marker
+        #markerElem="mapMarker"
+        *ngFor="let venue of venues"
+        [position]="{lat: venue.location.lat, lng: venue.location.lng}"
+        [title]="venue.name"
+        (mapClick)="openInfo(markerElem, venue.name)"
+    >
+    </map-marker>
+
+    <map-info-window>
+        <div class="info-container">
+            {{ infoContent }}
+        </div>
+    </map-info-window>
+</google-map>
+</div>
+
 <div class="container" *ngIf="venues">
     <ul class="unstyle venue-list">
-        <li *ngFor="let venue of venues" class="venue-list-item container">
+        <li *ngFor="let venue of venues" class="venue-list-item">
 
             <div class="column">
-                <h3 class="company-name">
-                    {{ venue.name }}
-                </h3>
+                <a
+                    [attr.href]="getVenueUrl(venue)"
+                    target="_blank"
+                >
+                    <h3 class="company-name">
+                        {{ venue.name }}
+                    </h3>
+                </a>
+
+
+                <p>{{ getVenueAddress(venue) }}</p>
             </div>
 
         </li>

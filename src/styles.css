@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background: linear-gradient( 45deg, rgb(227 73 125) 10%, rgb(148 83 185) 50%, rgb(86 91 232) 90%);
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  margin: 1rem;
+}
+
+h2.site-title {
+  text-shadow: 0 0 1px black;
+  color: white;
+  font-size: 2rem
+}
+
+.container {
+  text-shadow: 0 0 1px black;
+  color: white;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+a {
+  color: #090d8e;
+  text-decoration: none;
+}

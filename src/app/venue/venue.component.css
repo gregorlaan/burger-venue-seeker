@@ -1,0 +1,23 @@
+ul.unstyle.venue-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 1rem;
+  margin: 1rem;
+}
+
+.info-container {
+  font-size: 2rem;
+}
+
+li.venue-list-item {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.google-maps-container {
+  border-radius: 3px;
+  overflow: hidden;
+}
